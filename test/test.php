@@ -17,11 +17,16 @@ try {
     $ktMng = new ktMngMySQL($config);
 
     // テスト対象スキーマ名（存在するDB名に変更ください）
-    $schemaName = 'excel2mysql';
+    $schemaName = 'test';
+
+    echo "=== スキーマ一覧取得テスト ===\n";
+    $smlist = $ktMng->getSchemaList();
+    echo $smlist . "\n";
 
     echo "=== スキーマ情報取得テスト ===\n";
     $dbInfo = $ktMng->getDBInfo($schemaName);
     echo $dbInfo . "\n";
+
 
     // スキーマ内のテーブル名を1つ指定（存在するテーブル名に変更ください）
     $tableName = 'expense';

@@ -60,6 +60,32 @@ class ktMngMySQL
 
 
     /**
+     * スキーマ一覧取得
+     * 
+     * 現在のMySQLサーバに存在するスキーマ（データベース）名の一覧を
+     * テキスト形式で返す。
+     * 
+     * @return string スキーマ名一覧（1行に1スキーマ名）
+     */
+    public function getSchemaList(): string
+    {
+        $sql = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA ORDER BY SCHEMA_NAME";
+        $stmt = $this->pdo->query($sql);
+        $schemas = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        if (empty($schemas)) {
+            return "スキーマは存在しません。\n";
+        }
+
+        $text = "スキーマ一覧:\n";
+        foreach ($schemas as $schemaName) {
+            $text .= "  - {$schemaName}\n";
+        }
+
+        return $text;
+    }
+
+    /**
      * スキーマ（データベース）情報取得
      *
      * 指定したスキーマ名のテーブル一覧とテーブル詳細情報をテキストで返す

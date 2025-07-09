@@ -1,0 +1,16 @@
+{
+    "name": "kobit/ktmngmysql",
+    "autoload": {
+        "psr-4": {
+            "Kobit\\Ktmngmysql\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kazoo",
+            "email": "fx.kazoo@gmail.com"
+        }
+    ],
+    "require": {}
+}
+

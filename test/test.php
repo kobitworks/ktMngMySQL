@@ -19,6 +19,8 @@ try {
     // テスト対象スキーマ名（存在するDB名に変更ください）
     $schemaName = 'test';
 
+    echo "<pre>\n";
+
     echo "=== スキーマ一覧取得テスト ===\n";
     $smlist = $ktMng->getSchemaList();
     echo $smlist . "\n";
@@ -27,13 +29,42 @@ try {
     $dbInfo = $ktMng->getDBInfo($schemaName);
     echo $dbInfo . "\n";
 
-
     // スキーマ内のテーブル名を1つ指定（存在するテーブル名に変更ください）
-    $tableName = 'expense';
+    $tableName = 'customers';
 
     echo "=== テーブル情報取得テスト ===\n";
     $tableInfo = $ktMng->getTableInfo($tableName);
     echo $tableInfo . "\n";
+
+    echo "<hr>\n";
+
+
+    echo "=== スキーマ作成コマンド取得テスト ===\n";
+    $dbInfo = $ktMng->getCreateSchemaSQL($schemaName);
+    echo $dbInfo . "\n";
+
+    echo "=== スキーマ作成コマンド取得テスト ===\n";
+    $dbInfo = $ktMng->getCreateTablesSQL($schemaName);
+    echo $dbInfo . "\n";
+
+    echo "=== スキーマ作成コマンド取得テスト ===\n";
+    $dbInfo = $ktMng->getCreateViewsSQL($schemaName);
+    echo $dbInfo . "\n";
+
+    echo "=== スキーマ作成コマンド取得テスト ===\n";
+    $dbInfo = $ktMng->getCreateProceduresSQL($schemaName);
+    echo $dbInfo . "\n";
+
+    echo "=== スキーマ作成コマンド取得テスト ===\n";
+    $dbInfo = $ktMng->getCreateFunctionsSQL($schemaName);
+    echo $dbInfo . "\n";
+
+    echo "=== スキーマ作成コマンド取得テスト ===\n";
+    $dbInfo = $ktMng->getCreateAllSQL($schemaName);
+    echo $dbInfo . "\n";
+
+
+    echo "</pre>\n";
 
 } catch (Exception $e) {
     echo "エラー: " . $e->getMessage() . "\n";
